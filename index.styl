@@ -1,0 +1,153 @@
+$color=#BCA68E
+$keysize=6rem
+$space=0.2rem
+
+html, body
+	background white
+	font-size 1vw
+	margin 0
+	padding 0
+	width 100%
+	height 100%
+body
+	display flex
+	justify-content center
+	align-items center
+.keyboard
+	display inline-block
+	position relative
+	transition filter .7s
+	// filter blur(1.5rem)
+p, div
+	margin 0
+	padding 0
+.key
+	margin $space
+	padding 0
+	display inline-block
+	font-family Ubuntu, sans-serif
+	width $keysize
+	height $keysize
+	font-size unit($keysize/3, rem)
+	position relative
+	transition background-color ease-out .1s
+	box-sizing border-box
+	background-color lightness(black, 96%)
+	&:hover
+		background-color alpha($color, .4)
+	&:active
+		background-color $color
+	p
+		display block
+		position absolute
+		width 50%
+		height 50%
+		text-align center
+	.lower
+		right 0
+		bottom 0
+	.upper
+		left 0
+		top 0
+	&.letter
+		line-height $keysize
+		p
+			width 100%
+			height auto
+		.lower
+			display none
+	&[id]
+		line-height $keysize
+		p
+			width 100%
+			height auto
+.line
+	margin 0
+	padding $space
+	height $keysize
+	display block
+	{vendor}user-select none for vendor in '-webkit-' '-moz-' '-ms-'
+	for i in (0..2)
+		&:nth-of-type({i+2})>.key:first-of-type
+			width unit(10+2*i, rem)
+	&:nth-of-type(3)>.key:nth-of-type(5), &:nth-of-type(3)>.key:nth-of-type(8)
+		&:after
+			content ""
+			display block
+			position absolute
+			bottom 0px
+			left 20%
+			width ((50 - 20)*2)%
+			border-bottom .3rem solid $color
+	&:nth-of-type(2)>.key:last-of-type
+		z-index 2
+		position absolute
+
+#enter
+	width 12rem+4*$space
+	height ($keysize+$space)*2
+	margin-top - $keysize - $space
+	position absolute
+	z-index 1
+	p
+		bottom 0
+	&:before
+		width 4rem
+		height $keysize
+		padding $space
+		content ""
+		position absolute
+		left 0
+		top 0
+		background-color white
+#rshift
+	width 16rem+6*$space
+
+#selector
+	text-align center
+	position absolute
+	left 0
+	top 0
+	width 100%
+	height 100%
+	// display flex
+	display none
+	justify-content center
+	align-items center
+	&>div
+		display inline-block
+		border 3rem solid transparent
+	& *
+		margin 0
+		padding 0
+		font-size 1.25rem
+	input, select
+		box-sizing border-box
+		padding 1rem
+		margin .2rem 0
+		width 100%
+		
+		border 0
+		background-color transparent
+		border-bottom .1rem solid alpha($color, .3)
+		transition border-bottom-color .7s
+		&:hover
+			border-bottom-color $color
+	h1
+		font-weight bold
+		font-size 2.5rem
+	button
+		width 100%
+		height 4rem
+		margin-top 2rem
+		
+		border .1rem solid $color
+		background-color transparent
+		transition background-color .5s, box-shadow .3s
+		&:hover
+			background-color $color
+			box-shadow .2rem .2rem .1rem $color
+		&:active
+			box-shadow 0 0 0 transparent
+.hidden
+	display none

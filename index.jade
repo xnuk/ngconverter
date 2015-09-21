@@ -1,0 +1,48 @@
+- const keys=[["`1234567890-=\\", '~!@#$%^&*()_+|'], ["qwertyuiop[]", 'QWERTYUIOP{}'], ["asdfghjkl;'", 'ASDFGHJKL:"'], ["zxcvbnm,./", 'ZXCVBNM<>?']]
+
+doctype html
+html
+head
+	meta(charset="UTF-8")
+	title Xnuk
+	link(href='./index.css', type='text/css', rel='stylesheet')
+	script(src='./index.js')
+body
+	.keyboard
+		each l, i in keys
+			.line
+				case i
+					when 1
+						.key#tab
+							p 자판 배열
+					when 2
+						.key#caps
+							p
+					when 3
+						.key#shift
+							p
+				each _, i in Array(l[0].length)
+					.key(data-upper=l[1][i].charCodeAt(), data-lower=l[0][i].charCodeAt())
+						p.upper=l[1][i]
+						p.lower=l[0][i]
+				case i
+					when 0
+						.key#backspace
+							p ←
+					when 2
+						.key#enter
+							p ⏎ 변환
+					when 3
+						.key#rshift
+							p
+	#selector
+		div
+			h1 자판 배열을 선택하세요
+			input(type="text", placeholder="...아니면 하나 불러와도 되고요!")
+			select
+				option(value="")="현재 자판 배열"
+				for v in ["Qwerty", "Dvorak", "Colemak", "Workman", "Qwpr", "Norman", "CarPalx QFMLWY", "CarPalx QGMLWB", "CarPalx QGMLWY ", "Asset", "Minimak 4-key", "Minimak 8-key", "Minimak 12-key"]
+					option(value=v)=v
+			button#apply 적용
+	.hidden
+		input#file(type="file", accept='text/xml')
