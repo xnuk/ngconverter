@@ -176,7 +176,7 @@ window.addEventListener('load', function(){
 			if((code==='Esc' || code==='Escape') && elSelector.style.display==='flex'){
 				elTab.onclick()
 			}
-			if(code==='Enter' && elSelector.style.display===''){
+			if(code==='Enter' && elSelector.style.display!=='flex'){
 				elEnter.onclick()
 			}
 		}
