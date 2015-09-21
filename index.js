@@ -99,7 +99,7 @@ window.addEventListener('load', function(){
 		focus=this
 	})
 	window.addEventListener('keydown', function(e){
-		if(e.code==='Backspace' || e.code==='Tab') e.preventDefault()
+		if((e.code==='Backspace' && elSelector.style.display!=='flex') || e.code==='Tab') e.preventDefault()
 		if(focus!=null){
 			const upper=focus.getElementsByClassName('upper')[0]
 			const lower=focus.getElementsByClassName('lower')[0]
@@ -175,6 +175,7 @@ window.addEventListener('load', function(){
 			}
 			if((code==='Esc' || code==='Escape') && elSelector.style.display==='flex'){
 				elTab.onclick()
+				return
 			}
 			if(code==='Enter' && elSelector.style.display!=='flex'){
 				elEnter.onclick()
