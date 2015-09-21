@@ -176,6 +176,9 @@ window.addEventListener('load', function(){
 			if((code==='Esc' || code==='Escape') && elSelector.style.display==='flex'){
 				elTab.onclick()
 			}
+			if(code==='Enter' && elSelector.style.display===''){
+				elEnter.onclick()
+			}
 		}
 	}, false)
 	elTab.onclick=function(){
@@ -215,7 +218,7 @@ window.addEventListener('load', function(){
 			document.getElementsByClassName('hidden')[0].appendChild(a)
 			a.click()
 			a.remove()
-	}).catch(v=>alert(v))
+		}).catch(v=>alert(v))
 	}
 })
 
